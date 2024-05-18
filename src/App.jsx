@@ -4,6 +4,7 @@ import { Timer } from './components/Timer/Timer.jsx';
 import {data} from './data/data.js'
 import { Results } from './components/Results/Results.jsx';
 import { MonoGame } from './components/Game/MonoGame.jsx';
+import { Home } from './components/Home/Home.jsx';
 console.log(data);
 function App() {
   const [currWordIndex, setCurrWordIndex] = useState(0)
@@ -99,10 +100,7 @@ const [timerValue, setTimerValue] = useState(60);
     <>
     {
       status === 'waiting' && 
-      <>
-       <h1>Welcome to ThorType</h1>
-       <button onClick={()=>setStatus('playing')}>Play as guest</button>
-      </>
+      <Home setStatus={setStatus}/>
     }
       { 
       status === 'playing' &&
