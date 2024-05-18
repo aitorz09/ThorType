@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { Timer } from './components/Timer/Timer.jsx';
 import {data} from './data/data.js'
@@ -12,11 +12,6 @@ function App() {
   const [status, setStatus] = useState("playing")
   const [inputValue, setInputValue] = useState('')
   const [inputMaxLength,setInputMaxLength] = useState(null)
-  const TEXT =
-  'the quick brown fox jumps over the blue dragon cat while my daughter was drinking water in the kitchen, please Lord forgive her for that kind of disrespect.';
-  const WORDS = data.toSorted(()=>{
-    Math.random() - 0.5
-  }).slice(0, 48);
   const [words, setWords] = useState([])
   const accuracy = (correct / (correct + incorrect)) * 100;
 const roundedAccuracy = accuracy.toFixed(2)
@@ -75,6 +70,8 @@ const [timerValue, setTimerValue] = useState(60);
           if (prevTimerValue === 0) {
             clearInterval(intervalId);
             setStatus('finished');
+            setCurrWordIndex(0)
+            setCurrCharIndex(-1)
             return 60; // Reiniciar el temporizador cuando llegue a cero
           } else {
             return prevTimerValue - 1;
