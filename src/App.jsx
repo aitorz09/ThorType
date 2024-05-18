@@ -57,6 +57,14 @@ const [timerValue, setTimerValue] = useState(60);
     }
     return '';
   }
+  function handleClick(){
+    setStatus('playing')
+    setCurrWordIndex(0)
+    setCurrCharIndex(-1)
+    setInputValue('')
+    setCorrect(0)
+    setIncorrect(0)
+  }
   
   useEffect(() => {
     const WORDS = data.sort(() => Math.random() - 0.5).slice(0, 48);
@@ -70,9 +78,7 @@ const [timerValue, setTimerValue] = useState(60);
           if (prevTimerValue === 0) {
             clearInterval(intervalId);
             setStatus('finished');
-            setCurrWordIndex(0)
-            setCurrCharIndex(-1)
-            return 60; // Reiniciar el temporizador cuando llegue a cero
+            return 60;
           } else {
             return prevTimerValue - 1;
           }
@@ -80,6 +86,10 @@ const [timerValue, setTimerValue] = useState(60);
       }, 1000);
     } else if (status === 'finished') {
       clearInterval(intervalId);
+      setCurrWordIndex(0)
+      setCurrCharIndex(-1)
+      setInputValue('')
+      
     }
     return () => clearInterval(intervalId);
   }, [status]);
@@ -115,7 +125,7 @@ const [timerValue, setTimerValue] = useState(60);
          <section className='results'>
             <h2>WPM : <span>{correct}</span></h2>
             <h2>Acurracy: <span>{roundedAccuracy}%</span></h2>
-            <button onClick={()=>setStatus('playing')}>PlayAgain</button>
+            <button onClick={handleClick}>PlayAgain</button>
           </section>
         </>
       }

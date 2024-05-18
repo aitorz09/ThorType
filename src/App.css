@@ -29,6 +29,13 @@
 .correct{
   color: greenyellow
 }
+.correct::after{
+  position: absolute;
+  content: '+1';
+  left: 50%;
+  top: 50%;
+  color: green;
+}
 .incorrect{
   color: red
 }
