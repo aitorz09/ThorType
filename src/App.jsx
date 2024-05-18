@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { Timer } from './components/Timer/Timer.jsx';
 import {data} from './data/data.js'
+import { Results } from './components/Results/Results.jsx';
+import { MonoGame } from './components/Game/MonoGame.jsx';
 console.log(data);
 function App() {
   const [currWordIndex, setCurrWordIndex] = useState(0)
@@ -9,7 +11,7 @@ function App() {
   const [currChar, setCurrChar] = useState("")
   const [correct, setCorrect] = useState(0)
   const [incorrect, setIncorrect] = useState(0)
-  const [status, setStatus] = useState("playing")
+  const [status, setStatus] = useState("waiting")
   const [inputValue, setInputValue] = useState('')
   const [inputMaxLength,setInputMaxLength] = useState(null)
   const [words, setWords] = useState([])
@@ -95,41 +97,24 @@ const [timerValue, setTimerValue] = useState(60);
   }, [status]);
   return (
     <>
+    {
+      status === 'waiting' && 
+      <>
+       <h1>Welcome to ThorType</h1>
+       <button onClick={()=>setStatus('playing')}>Play as guest</button>
+      </>
+    }
       { 
       status === 'playing' &&
       <>
         <Timer timerValue={timerValue} />
-        <section className='mono-game'>
-        {words.length === 0 ? 
-          <p>Loading...</p>
-          : 
-          words.map((word, wordIndex) => 
-            <span className='word' key={wordIndex}>
-              
-              {word.split('').map((letter, letterIndex) => 
-                <span key={`${wordIndex}-${letterIndex}`} className={getCharClass(wordIndex,letterIndex,letter)}>
-                  {letter}
-                </span>
-              )}
-            </span>
-          )
-      }
-      <input className='Game-input' onKeyDown={handleKeyDown} maxLength={inputMaxLength} autoFocus onChange={handleChange} type='text' value={inputValue} />
-        </section>
-         
+        <MonoGame words={words} getCharClass={getCharClass} handleChange={handleChange} handleKeyDown={handleKeyDown} inputValue={inputValue} inputMaxLength={inputMaxLength}/>
       </>
       }
       {
         status === 'finished' &&
-        <>
-         <section className='results'>
-            <h2>WPM : <span>{correct}</span></h2>
-            <h2>Acurracy: <span>{roundedAccuracy}%</span></h2>
-            <button onClick={handleClick}>PlayAgain</button>
-          </section>
-        </>
+        <Results correct={correct} roundedAccuracy={roundedAccuracy} handleClick={handleClick}/>
       }
-      
     </>
   );
 }
