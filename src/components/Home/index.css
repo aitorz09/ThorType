@@ -10,7 +10,26 @@
 }
 h1{
 font-size: 46px;
+display: flex;
+align-items: center;
 }
-button{
-border-radius: 10px;
+.homepage-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
+.homepage-btn {
+  
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: transform 500ms ease-in;
+}
+
+.homepage-btn:hover {
+  transform:scale(1.1)
+}
+
+
+

@@ -5,7 +5,7 @@ import { data } from './data/data.js';
 import { Results } from './components/Results/Results.jsx';
 import { MonoGame } from './components/Game/MonoGame.jsx';
 import { Home } from './components/Home/Home.jsx';
-import { Header } from './components/Header/header.jsx';
+import { Header } from './components/Header/Header.jsx';
 
 function App() {
   const maxWords = 32;

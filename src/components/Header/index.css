@@ -1,0 +1,9 @@
+.header-wrap{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.header-svg{
+  font-size: 36px;
+  width: 50px;
+}
