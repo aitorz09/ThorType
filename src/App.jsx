@@ -27,7 +27,19 @@ function App() {
     const newValue = e.target.value;
     setInputValue(newValue);
   };
-
+  function reset (timer){
+    setCurrWordIndex(0);
+    setCurrCharIndex(-1);
+    setInputValue("");
+    setCorrect(0);
+    setIncorrect(0);
+    setTimerValue(timer)
+  }
+  function handleMaxWords(number){
+    setMaxWords(number)
+    reset(60)
+    getWords(number)
+  }
   function setInputRef(inputRef) {
     setInput(inputRef);
   }
@@ -72,17 +84,13 @@ function App() {
 
   function handleClick() {
     setStatus("playing");
-    setCurrWordIndex(0);
-    setCurrCharIndex(-1);
-    setInputValue("");
-    setCorrect(0);
-    setIncorrect(0);
+    reset()
     getWords();
     console.log(input);
   }
 
-  function getWords() {
-    const WORDS = data.sort(() => Math.random() - 0.5).slice(0, maxWords);
+  function getWords(number) {
+    const WORDS = data.sort(() => Math.random() - 0.5).slice(0, number);
     setWords(WORDS);
   }
   useEffect(()=>{
@@ -91,7 +99,7 @@ function App() {
     }
   },[currWordIndex])
   useEffect(() => {
-    getWords();
+    getWords(maxWords);
   }, []);
 
   useEffect(() => {
@@ -123,7 +131,7 @@ function App() {
       {(status === "playing" || status === "finished") && (
         <>
           <Header />
-          <Timer getWords={getWords} timerValue={timerValue} maxWords={maxWords} currWordIndex={currWordIndex} />
+          <Timer  handleMaxWords={handleMaxWords} timerValue={timerValue} maxWords={maxWords} currWordIndex={currWordIndex} />
           <MonoGame
             words={words}
             getCharClass={getCharClass}
@@ -133,7 +141,8 @@ function App() {
             inputMaxLength={inputMaxLength}
             status={status}
             setInputRef={setInputRef}
-          />
+          >
+          </MonoGame>
           {status === "finished" && <Results inputRef={input} correct={correct} roundedAccuracy={roundedAccuracy} handleClick={handleClick} />}
         </>
       )}

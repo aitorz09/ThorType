@@ -25,5 +25,6 @@ export const MonoGame = ({ setInputRef, status, words, getCharClass, handleKeyDo
       }
       <input ref={inputRef} disabled={status === 'finished' && true} className='Game-input' onKeyDown={handleKeyDown} maxLength={inputMaxLength} autoFocus onChange={handleChange} type='text' value={inputValue} />
     </main>
+    
   );
 };

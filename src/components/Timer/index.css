@@ -9,3 +9,43 @@ gap: 2rem;
 .timer-words-count{
 
 }
+.dificulty-wrap{
+  margin-left: auto;
+  display: flex;
+  gap: 10px; 
+}
+.easy,.medium,.hard{
+  border: none;
+  background: none;
+  font-weight: 800;
+  font-size: 1rem;
+}
+.easy{
+  color: transparent;
+background-image: linear-gradient(to right, #00b09b, #96c93d);
+-webkit-background-clip: text;
+background-clip: text;
+text-shadow: 0 0 10px #000; /* Contorno negro */
+
+  
+  }
+.medium{
+  color: transparent;
+  background-image: linear-gradient(to right, #f12711, #f5af19);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 10px #000; /* Contorno negro */
+  
+
+  
+}
+.hard{
+  color: transparent;
+background-image: linear-gradient(to right, #ff0000, #cc0000);
+-webkit-background-clip: text;
+background-clip: text;
+text-shadow: 0 0 10px #000; /* Contorno negro */
+
+  
+  
+}
