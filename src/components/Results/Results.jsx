@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 export const Results = ({correct,roundedAccuracy,handleClick}) => {
   return (

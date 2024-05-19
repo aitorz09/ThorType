@@ -1,8 +1,14 @@
 
-
-export const Timer = ({timerValue}) => {
+import './index.css'
+export const Timer = ({timerValue, maxWords, currWordIndex}) => {
 
   return (
-    <p>{timerValue}</p>
+    <>
+    <section className="timer-wrap">
+      <p className="timer-timer">{timerValue}</p>
+      <p className="timer-words-count">{`${currWordIndex}/${maxWords}`}</p>
+    </section>
+    </>
+
   )
 }
