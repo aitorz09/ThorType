@@ -84,8 +84,8 @@ function App() {
 
   function handleClick() {
     setStatus("playing");
-    reset()
-    getWords();
+    reset(60)
+    getWords(maxWords)
     console.log(input);
   }
 
