@@ -8,7 +8,7 @@ import { Home } from './components/Home/Home.jsx';
 import { Header } from './components/Header/Header.jsx';
 
 function App() {
-  const maxWords = 32;
+  const [maxWords,setMaxWords] = useState(32)
   const [currWordIndex, setCurrWordIndex] = useState(0);
   const [currCharIndex, setCurrCharIndex] = useState(-1);
   const [currChar, setCurrChar] = useState("");
@@ -85,7 +85,11 @@ function App() {
     const WORDS = data.sort(() => Math.random() - 0.5).slice(0, maxWords);
     setWords(WORDS);
   }
-
+  useEffect(()=>{
+    if(currWordIndex >= maxWords){
+     setStatus('finished')
+    }
+  },[currWordIndex])
   useEffect(() => {
     getWords();
   }, []);
@@ -119,7 +123,7 @@ function App() {
       {(status === "playing" || status === "finished") && (
         <>
           <Header />
-          <Timer timerValue={timerValue} maxWords={maxWords} currWordIndex={currWordIndex} />
+          <Timer getWords={getWords} timerValue={timerValue} maxWords={maxWords} currWordIndex={currWordIndex} />
           <MonoGame
             words={words}
             getCharClass={getCharClass}
