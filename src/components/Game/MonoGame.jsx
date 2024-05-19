@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
-
-export const MonoGame = ({ setInputRef, status, words, getCharClass, handleKeyDown, inputMaxLength, handleChange, inputValue }) => {
+import { Timer } from "../Timer/Timer.jsx";
+import './index.css'
+export const MonoGame = ({ setInputRef, status, words, getCharClass, handleKeyDown, inputMaxLength, handleChange, inputValue,handleMaxWords,timerValue,maxWords,currWordIndex }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -9,7 +10,14 @@ export const MonoGame = ({ setInputRef, status, words, getCharClass, handleKeyDo
   }, [setInputRef]);
 
   return (
-    <main className='mono-game'>
+    <>
+    <main className="main">
+     
+     <section className="mono-game-timer-wrap">
+      <Timer  handleMaxWords={handleMaxWords} timerValue={timerValue} maxWords={maxWords} currWordIndex={currWordIndex} />
+     </section>
+     <section className='mono-game'>
+
       {words.length === 0 ?
         <p>Loading...</p>
         :
@@ -24,7 +32,9 @@ export const MonoGame = ({ setInputRef, status, words, getCharClass, handleKeyDo
         )
       }
       <input ref={inputRef} disabled={status === 'finished' && true} className='Game-input' onKeyDown={handleKeyDown} maxLength={inputMaxLength} autoFocus onChange={handleChange} type='text' value={inputValue} />
+     </section>
     </main>
+    </>
     
   );
 };

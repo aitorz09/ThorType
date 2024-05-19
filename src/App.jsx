@@ -131,7 +131,7 @@ function App() {
       {(status === "playing" || status === "finished") && (
         <>
           <Header />
-          <Timer  handleMaxWords={handleMaxWords} timerValue={timerValue} maxWords={maxWords} currWordIndex={currWordIndex} />
+          {/* <Timer  handleMaxWords={handleMaxWords} timerValue={timerValue} maxWords={maxWords} currWordIndex={currWordIndex} /> */}
           <MonoGame
             words={words}
             getCharClass={getCharClass}
@@ -141,6 +141,10 @@ function App() {
             inputMaxLength={inputMaxLength}
             status={status}
             setInputRef={setInputRef}
+            handleMaxWords={handleMaxWords}
+            timerValue={timerValue}
+            maxWords={maxWords}
+            currWordIndex={currWordIndex}
           >
           </MonoGame>
           {status === "finished" && <Results inputRef={input} correct={correct} roundedAccuracy={roundedAccuracy} handleClick={handleClick} />}

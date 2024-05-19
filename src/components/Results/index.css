@@ -1,0 +1,24 @@
+span{
+  font-size: 1.6rem;
+}
+.good{
+color: transparent;
+background-image: linear-gradient(to right, #0abe5b, #96c93d);
+-webkit-background-clip: text;
+background-clip: text;
+text-shadow: 0 0 10px #000; 
+}
+.regular{
+ color: transparent;
+  background-image: linear-gradient(to right, #f12711, #f5af19);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 10px #000; 
+}
+.bad{
+color: transparent;
+background-image: linear-gradient(to right, #ff0000, #cc0000);
+-webkit-background-clip: text;
+background-clip: text;
+text-shadow: 0 0 10px #000; 
+}
