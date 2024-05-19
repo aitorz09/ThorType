@@ -20,7 +20,7 @@ function App() {
   const [words, setWords] = useState([]);
   const accuracy = (correct / (correct + incorrect)) * 100;
   const roundedAccuracy = accuracy.toFixed(2);
-  const [timerValue, setTimerValue] = useState(5);
+  const [timerValue, setTimerValue] = useState(60);
   const [input, setInput] = useState(null);
 
   const handleChange = (e) => {
