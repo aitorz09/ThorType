@@ -19,6 +19,7 @@ gap: 2rem;
   background: none;
   font-weight: 800;
   font-size: 1rem;
+  transition: all 500ms ease-in-out;
 }
 .easy{
   color: transparent;
@@ -35,9 +36,6 @@ text-shadow: 0 0 10px #000; /* Contorno negro */
   -webkit-background-clip: text;
   background-clip: text;
   text-shadow: 0 0 10px #000; /* Contorno negro */
-  
-
-  
 }
 .hard{
   color: transparent;
@@ -45,7 +43,7 @@ background-image: linear-gradient(to right, #ff0000, #cc0000);
 -webkit-background-clip: text;
 background-clip: text;
 text-shadow: 0 0 10px #000; /* Contorno negro */
-
-  
-  
+}
+.easy:hover,.medium:hover,.hard:hover{
+  transform: scale(1.2)
 }

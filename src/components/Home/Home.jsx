@@ -10,7 +10,6 @@ export const Home = ({ setStatus }) => {
     const intervalId = setInterval(() => {
       setDisplayedText((prev) =>{
         if(index < fullText.length){
-          console.log(prev);
           return prev + fullText[index]
           } else{
             clearInterval(intervalId)
@@ -33,6 +32,7 @@ export const Home = ({ setStatus }) => {
         </svg>
       </div>
       <p className="homepage-p">{displayedText}</p>
+      <p >Beta Test</p>
       <button className="homepage-btn" style={{ width: '100px' }} onClick={() => setStatus('playing')}>Play as guest</button>
     </section>
   );
